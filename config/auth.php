@@ -35,12 +35,13 @@ return [
     |
     */
 
-    'guards' => [
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
-        ],
+   'guards' => [
+    'web' => [
+        'driver' => 'session',
+        'provider' => 'gurus', // Pastikan ini cocok dengan nama provider
     ],
+],
+
 
     /*
     |--------------------------------------------------------------------------
@@ -59,17 +60,12 @@ return [
     |
     */
 
-    'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
-        ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+  'providers' => [
+    'gurus' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Guru::class, // Pastikan model Guru ada di path ini
     ],
+],
 
     /*
     |--------------------------------------------------------------------------
