@@ -30,7 +30,9 @@
                 <div class="d-flex align-items-center">
                     <span class="me-3">Welcome, {{ auth()->user()->nama }}</span>
                     <a href="{{ route('siswa.index') }}" class="btn btn-outline-secondary me-2">Siswa</a>
-                    <a href="{{ route('logout') }}" class="btn btn-danger">Logout</a>
+                    <form method="POST" action="{{ route('logout') }}" style="display: inline;">
+                         @csrf
+                    <button class="btn btn-danger">Logout</button></form>
                 </div>
             </div>
         </header>
