@@ -160,3 +160,161 @@ table .btn {
     background-color: #138496;
     border-color: #117a8b;
 }
+/* Pastikan semua elemen memiliki kotak yang nyaman */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Global Style */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #f9fafb;
+    color: #1f2937;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header (Top Bar) */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1d4ed8;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+header .brand-logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+header .page-title {
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    flex: 1;
+}
+
+header .user-info {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Navigation Menu */
+nav {
+    background: #3b82f6;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid #1d4ed8;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Main Content */
+main {
+    padding: 20px;
+}
+
+main .content-wrapper {
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    border: 1px solid #e5e7eb;
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background: #3b82f6;
+    color: white;
+    font-weight: bold;
+}
+
+/* Button Styling */
+button, .btn {
+    display: inline-block;
+    background: #3b82f6;
+    color: white;
+    padding: 10px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+button:hover, .btn:hover {
+    background: #2563eb;
+}
+
+button:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    header .page-title {
+        font-size: 16px;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    table th, table td {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    button, .btn {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    header .brand-logo {
+        font-size: 18px;
+    }
+
+    header .page-title {
+        font-size: 14px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+}
