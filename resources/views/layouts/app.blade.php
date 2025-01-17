@@ -6,45 +6,58 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title', 'Sistem Manajemen Hafalan')</title>
 
-    <!-- Link ke CSS dan Framework (misalnya Bootstrap) -->
+    <!-- Link ke CSS dan Font -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
-
-    <!-- Tambahkan stylesheet lainnya jika perlu -->
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
-<body>
+<body class="bg-light text-dark">
     <div id="app">
-        <!-- Navbar (Header) -->
-        <header class="bg-light shadow-sm">
-            <div class="container d-flex align-items-center justify-content-between py-3">
-                <!-- Logo Kiri -->
-                <a href="{{ url('/') }}" class="navbar-brand d-flex align-items-center">
-                    <img src="{{ asset('logo.png') }}" alt="Logo" style="height: 100px;" class="me-2">
+        <!-- Navbar -->
+        <header class="navbar navbar-expand-lg navbar-light bg-primary shadow-sm py-3">
+            <div class="container-fluid d-flex justify-content-between align-items-center">
+                <!-- Kiri: Logo dan Nama Sistem -->
+                <a href="{{ url('dashboard') }}" class="navbar-brand d-flex align-items-center text-white">
+                    <span class="fw-bold">Manajemen Hafalan</span>
                 </a>
-                <span class="me-3">Welcome, {{ auth()->user()->nama }}</span>
-                <!-- Nama User dan Menu Kanan -->
-                <div class="d-flex align-items-center justify-content-between py-3">
-                    <a href="{{ route('siswa.index') }}" class="btn btn-outline-secondary me-2">Siswa</a>
-                    <form method="POST" action="{{ route('logout') }}" style="display: inline;">
-                         @csrf
-                    <button class="btn btn-danger">Logout</button></form>
+                
+                <!-- Tengah: Judul Halaman -->
+                <span class="fw-semibold text-white d-none d-lg-block">@yield('title')</span>
+                
+                <!-- Kanan: Navigasi -->
+                <div class="d-flex align-items-center">
+                    <a href="{{ route('siswa.index') }}" class="btn btn-outline-light me-3">Siswa</a>
+                    <!-- Dropdown Profil -->
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle d-flex align-items-center border-0 bg-transparent" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="profile-icon rounded-circle d-flex align-items-center justify-content-center text-white">
+                                {{ strtoupper(substr(auth()->user()->nama, 0, 1)) }}
+                            </div>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end bg-primary text-white border-0">
+                            <li class="px-3 py-2 text-center fw-bold">{{ auth()->user()->nama }}</li>
+                            <li><hr class="dropdown-divider bg-white"></li>
+                            <li>
+                                <form method="POST" action="{{ route('logout') }}" class="d-inline">
+                                    @csrf
+                                    <button class="dropdown-item text-white text-center">Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </header>
 
         <!-- Main Content -->
-        <div class="container mt-4">
+        <div class="container mt-4 p-4 bg-white rounded shadow-sm text-dark">
             @yield('content')
         </div>
 
         <!-- Footer -->
-        <footer class="bg-light py-3 mt-4">
-            <div class="container text-center">
-                <p>&copy; 2025 MTsN1 Karanganyar. All Rights Reserved.</p>
-            </div>
+        <footer class="bg-primary text-white text-center py-3 mt-4">
+            <p>&copy; 2025 MTsN1 Karanganyar. All Rights Reserved.</p>
         </footer>
     </div>
 
