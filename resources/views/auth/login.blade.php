@@ -23,13 +23,15 @@
             background: #fff;
             border-radius: 15px;
             box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
-            width: 400px;
+            width: 100%;
+            max-width: 400px;
             padding: 30px;
             text-align: center;
+            box-sizing: border-box;
         }
 
         .login-container h2 {
-            font-size: 24px;
+            font-size: 28px;
             color: #1d4ed8;
             margin-bottom: 20px;
             font-weight: 700;
@@ -61,6 +63,7 @@
             border: 1px solid #d1d5db;
             border-radius: 8px;
             transition: border-color 0.3s;
+            box-sizing: border-box;
         }
 
         .input-field:focus {
@@ -107,12 +110,32 @@
         .footer a:hover {
             text-decoration: underline;
         }
+
+        /* Responsivitas */
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 20px;
+                width: 90%;
+            }
+
+            .login-container h2 {
+                font-size: 24px;
+            }
+
+            .input-group label {
+                font-size: 13px;
+            }
+
+            .input-field, .login-btn {
+                font-size: 15px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="login-container">
-        <h2>Login ke Sistem Hafalan</h2>
-        <p>Masukkan email dan password Anda untuk masuk</p>
+        <h2>Silahkan Log In</h2>
+        <p>Masukkan email dan password Anda</p>
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
