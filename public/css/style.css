@@ -97,3 +97,29 @@
         margin-bottom: 1rem;
     }
 }
+
+.card {
+    transition: transform 0.2s ease-in-out;
+    border-radius: 10px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-title {
+    color: #1d4ed8;
+}
+
+.delete-btn {
+    transition: background 0.3s ease;
+}
+
+.delete-btn:hover {
+    background: #b91c1c !important;
+}
+
+.input-group {
+    border-radius: 10px;
+    overflow: hidden;
+}

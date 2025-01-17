@@ -63,5 +63,30 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+    // AJAX Live Search
+    document.getElementById("searchInput").addEventListener("input", function() {
+        let query = this.value.trim();
+        fetch(`{{ route('siswa.index') }}?search=${query}`)
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById("siswaList").innerHTML = new DOMParser().parseFromString(html, "text/html").getElementById("siswaList").innerHTML;
+            });
+    });
+
+    // Modal Konfirmasi Hapus
+    let deleteId;
+    document.querySelectorAll(".delete-btn").forEach(button => {
+        button.addEventListener("click", function() {
+            deleteId = this.getAttribute("data-id");
+            let deleteForm = document.getElementById("deleteForm");
+            deleteForm.action = `/siswa/${deleteId}`;
+            new bootstrap.Modal(document.getElementById("confirmDeleteModal")).show();
+        });
+    });
+});
+</script>
+
 </body>
 </html>

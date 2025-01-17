@@ -7,20 +7,24 @@ use Illuminate\Http\Request;
 
 class SiswaController extends Controller
 {
-    // Menampilkan daftar siswa
     public function index(Request $request)
-    {
-        $query = Siswa::query();
+{
+    $query = $request->input('search');
+
+    // Ambil semua data siswa (urutkan berdasarkan nama secara ascending)
+    $siswa = Siswa::when($query, function ($queryBuilder) use ($query) {
+        return $queryBuilder->where('nama', 'like', "%$query%");
+    })->orderBy('nama', 'asc')->get(); // Urutkan dari A-Z
+
+    // Hitung total siswa
+    $totalSiswa = Siswa::count();
+
+    return view('siswa.index', compact('siswa', 'totalSiswa'));
+}
+
     
-        if ($request->has('search') && $request->search != '') {
-            $query->where('nama', 'LIKE', '%' . $request->search . '%');
-        }
     
-        $siswa = $query->paginate(10); // Ambil data siswa dengan pagination
-        $totalSiswa = Siswa::count();  // Hitung total siswa
-    
-        return view('siswa.index', compact('siswa', 'totalSiswa')); // Kirim ke view
-    }
+
 
 
     // Menampilkan form untuk tambah siswa
