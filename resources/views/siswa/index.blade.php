@@ -1,8 +1,8 @@
 @extends('layouts.app')
-
+@section('title', 'SISWA')
 @section('content')
 <div class="container mt-4">
-    <h2 class="text-center mb-4">Manajemen Siswa</h2>
+    <h2 class="text-center mb-4">Daftar Siswa</h2>
 
     <!-- Fitur Pencarian -->
     <div class="row mb-3">
@@ -16,6 +16,10 @@
                 </div>
             </form>
         </div>
+         <!-- Tombol Tambah Siswa -->
+        <div>
+            <a href="{{ route('siswa.create') }}" class="btn btn-success">Tambah Siswa</a>
+        </div>
     </div>
 
     <!-- Total Siswa -->
@@ -27,7 +31,7 @@
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
-                <th>#</th>
+                <th>No</th>
                 <th>Nama Siswa</th>
                 <th>Kelas</th>
                 <th>Aksi</th>
@@ -57,10 +61,5 @@
             @endforeach
         </tbody>
     </table>
-
-    <!-- Tombol Tambah Siswa -->
-    <div class="text-center">
-        <a href="{{ route('siswa.create') }}" class="btn btn-success">Tambah Siswa</a>
-    </div>
 </div>
 @endsection

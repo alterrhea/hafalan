@@ -1,8 +1,8 @@
 @extends('layouts.app')
-
+@section('title', 'TAMBAH HAFALAN')
 @section('content')
 <div class="container mt-4">
-    <h2 class="text-center mb-4">Tambah Hafalan untuk Siswa: {{ $siswa->nama }}</h2>
+    <h2 class="text-center mb-4">{{ $siswa->nama }}</h2>
 
     <!-- Form Tambah Hafalan -->
     <form action="{{ route('hafalan.store') }}" method="POST">
@@ -37,4 +37,22 @@
         <button type="submit" class="btn btn-primary">Simpan Hafalan</button>
     </form>
 </div>
+
+<script>
+    // Mengatur Tanggal Otomatis
+    window.onload = function() {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); // Januari = 0
+        var yyyy = today.getFullYear();
+        today = yyyy + '-' + mm + '-' + dd;
+        document.getElementById('tanggal').value = today;
+
+        // Mengatur Hari Otomatis dalam Bahasa Indonesia
+        var days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+        var dayName = days[new Date().getDay()]; // Mengambil nama hari dari objek Date yang baru
+        document.getElementById('hari').value = dayName;
+    };
+</script>
+
 @endsection
